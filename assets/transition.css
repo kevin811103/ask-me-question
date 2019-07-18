@@ -1,0 +1,12 @@
+/* https://ithelp.ithome.com.tw/articles/10205885?sc=iThelpR */
+
+/* https://zh.nuxtjs.org/api/configuration-transition/#transition-%E5%B1%9E%E6%80%A7%E9%85%8D%E7%BD%AE */
+.page-enter-active, .page-leave-active {
+    transition: opacity .7s
+  }
+  .page-enter, .page-leave-to {
+    opacity: 0
+  }
+  .page-enter-to, .page-leave {
+    opacity: 1
+  }
