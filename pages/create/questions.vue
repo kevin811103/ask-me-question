@@ -30,6 +30,7 @@
     </div>
 
     <div>--------</div>-->
+    <b-button @click="getQuestion()">test</b-button>
     <div v-for="item of dataObject.questions" :value="item.no" :key="item.no">
       <div>第{{item.no}}題</div>
       <b-form-group>
@@ -208,13 +209,22 @@ export default {
     };
   },
   methods: {
-    checkQuestionText(itemNo){
-      if(!this.dataObject.questions[itemNo - 1].text){
+    getQuestion() {
+      this.$store
+        .dispatch("module/question/getQuestionAll")
+        .then(res => {
+          console.log("res", res);
+        })
+        .then(error => {
+          console.log(error);
+        });
+    },
+    checkQuestionText(itemNo) {
+      if (!this.dataObject.questions[itemNo - 1].text) {
         this.dataObject.questions[itemNo - 1].needInput = true;
-      }else{
-         this.dataObject.questions[itemNo - 1].needInput = false;
+      } else {
+        this.dataObject.questions[itemNo - 1].needInput = false;
       }
-     
     },
     inputClick(q) {
       q.needInput = false;
@@ -223,8 +233,20 @@ export default {
       this.dataObject.userName = this.userName;
       //setQuestion
       // console.log(this.$store.state.module.question.userName);
-      this.$store.commit("module/question/setQuestion", JSON.parse(JSON.stringify(this.dataObject)));
+      this.$store.commit(
+        "module/question/setQuestion",
+        JSON.parse(JSON.stringify(this.dataObject))
+      );
       console.log(this.$store.state.module.question.question);
+      this.$store
+        .dispatch(
+          "module/question/questionUpload",
+          JSON.parse(JSON.stringify(this.dataObject))
+        )
+        .then(() => {})
+        .then(error => {
+          console.log(error);
+        });
       // console.log(this.dataObject);
     },
     radioChange(q, itemNo) {

@@ -1,4 +1,3 @@
-import { questionUpload } from "../../server/question/question-controller";
 
 
 export const state = () => ({
@@ -23,14 +22,22 @@ export const actions = {
         console.log('question', question)
 
         const data = await this.$axios.$post(
-          'http://localhost:3000/api/uploadQuestion' ,{
-            imageData
-          }
+          'http://localhost:3000/api/uploadQuestion' ,
+          question
         )
         console.log('data: ', data)
         const res = data
         return { status: 200, res }
       },
+      async getQuestionAll({ commit }){
+
+        const data = await this.$axios.$get(
+          'http://localhost:3000/api/getAllQuestion'
+        )
+        console.log('data: ', data)
+        const res = data
+        return { status: 200, res }
+      }
 
     // 
 }

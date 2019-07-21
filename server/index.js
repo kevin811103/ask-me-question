@@ -5,8 +5,11 @@ const app = express()
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
-config.dev = !(process.env.NODE_ENV === 'production')
-
+config.dev = !(process.env.NODE_ENV === 'production');
+// var bodyParser = require('body-parser');
+// app.use(bodyParser.urlencoded({
+//   extended: true
+// }));
 
 const question = require('./question/question-route');
 app.use("/", question)

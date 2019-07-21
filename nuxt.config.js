@@ -6,6 +6,11 @@ module.exports = {
   */
   head: {
     title: process.env.npm_package_name || '',
+    htmlAttrs: {
+      lang: "zh-Hant"
+      // 不設定會一直跑出翻譯
+      // https://www.injerry.com/blog-view.php?PID=5&sn=125
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

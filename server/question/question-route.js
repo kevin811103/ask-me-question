@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const questionController = require("./question-controller");
+var bodyParser = require('body-parser');
 // const bodyParser = require('body-parser')
 // // create application/json parser
 // var multer  = require('multer');
@@ -19,8 +20,18 @@ const questionController = require("./question-controller");
 // router.post('/uploadd',image_controller.account_list);
 // router.get('/getImage',image_controller.loadImg);
 // router.get('/getAllImg',image_controller.getAllImg);
+// app.use(bodyParser.urlencoded({
+//     extended: true
+// }));
 
-router.post('/api/uploadQuestion',questionController.questionUpload);
+
+router.use(bodyParser.urlencoded({
+    extended: true
+}));
+router.use(bodyParser.json());
+
+router.post('/api/uploadQuestion', questionController.questionUpload);
+router.get('/api/getAllQuestion',questionController.getAllQuestion);
 module.exports = router;
 
 
