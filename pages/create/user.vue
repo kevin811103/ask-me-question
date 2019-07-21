@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div>Please create new user</div>
+    <div><h1>請輸入您的姓名或暱稱</h1></div>
 
-    <b-input-group size="lg" prepend="input your name">
-      <b-form-input :value="userName"></b-form-input>
+    <b-input-group size="lg" prepend="暱稱或姓名">
+      <b-form-input v-model="userName"></b-form-input>
       <b-input-group-append>
         <b-button variant="primary" @click="createUser()">
           <b-spinner small v-show="inLoading"></b-spinner>
@@ -19,16 +19,26 @@
 export default {
   data() {
     return {
-      userName: "123",
+      userName: "",
       inLoading: false
     };
   },
+
   methods: {
     createUser() {
       this.inLoading = true;
+      if( this.userName){
+      console.log(this.$store.state.module.question.userName);
+      this.$store.commit("module/question/setName", this.userName);
+      console.log(this.$store.state.module.question.userName);
       setTimeout(() => {
           this.$router.push("/create/questions");
-      }, 800);
+      }, 500);
+      }else{
+        alert("請輸入姓名");
+         this.inLoading = false;
+      }
+
     }
   }
 };

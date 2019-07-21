@@ -1,9 +1,9 @@
 <template>
   <div class="mat-all">
-    <div>ＸＸＸ你好</div>
+    <div>{{userName}}你好</div>
 
     <div>請輸入想要你朋友回答der問題選項和答案</div>
-    <div>
+    <!-- <div>
       <b-form-group>
         <b-form-input :value="q1"></b-form-input>
         <b-form-radio v-model="selected" name="some-radios" value="1">
@@ -29,35 +29,32 @@
       </div>
     </div>
 
-    <div>--------</div>
+    <div>--------</div>-->
     <div v-for="item of dataObject.questions" :value="item.no" :key="item.no">
-      <!-- <div>
-        {{item.no}}
-        <div>{{item.choose}}</div>
-      </div>-->
+      <div>第{{item.no}}題</div>
       <b-form-group>
-        <b-form-input :value="item.text"></b-form-input>
-        <div v-for="q of item.r" :value="q.op" :key="q.op">
-          <b-form-radio v-model="q.choose" name="some-radios" value="1">
-            <b-form-input :value="q.text"></b-form-input>
+        <b-form-input v-model="item.text"></b-form-input>
+        <b-alert v-model="item.needInput" variant="danger">請輸入問題文字</b-alert>
+        <div v-for="(q,index) in item.r" :value="q.op" :key="q.op">
+          <b-form-radio
+            v-model="q.choose"
+            :name="item.no+'q'"
+            @change="radioChange(q,item.no)"
+            :value="index+1"
+            style="margin:5px"
+          >
+            <b-form-input v-model="q.text" @click="inputClick(q)"></b-form-input>
           </b-form-radio>
+          <b-alert v-model="q.needInput" variant="danger">請輸入選項文字</b-alert>
         </div>
 
         <div>
           問題{{item.no}}答案是:
-          <strong>{{item.choose}}</strong>
+          <strong>{{item.answerText}}</strong>
         </div>
-        <!-- <b-form-radio v-model="selected" name="some-radios" value="2">
-          <b-form-input :value="r2"></b-form-input>
-        </b-form-radio>
-        <b-form-radio v-model="selected" name="some-radios" value="3">
-          <b-form-input :value="r3"></b-form-input>
-        </b-form-radio>
-        <b-form-radio v-model="selected" name="some-radios" value="4">
-          <b-form-input :value="r4"></b-form-input>
-        </b-form-radio>-->
       </b-form-group>
     </div>
+    <b-button @click="sumitDataObject()">sumit</b-button>
   </div>
 </template>
 
@@ -65,13 +62,14 @@
 export default {
   data() {
     return {
-      selected: "",
-      q1: "",
-      r1: "OK",
-      r2: "fine",
-      r3: "not bad",
-      r4: "bad",
-      answer: "",
+      userName: "",
+      // selected: "",
+      // q1: "",
+      // r1: "OK",
+      // r2: "fine",
+      // r3: "not bad",
+      // r4: "bad",
+      // answer: "",
       dataObject: {
         userName: "",
         questions: [
@@ -79,85 +77,168 @@ export default {
             no: "1",
             text: "",
             r: [
-              { op: "1", text: "", choose: "" },
-              { op: "2", text: "", choose: "" },
-              { op: "3", text: "", choose: "" },
-              { op: "4", text: "", choose: "" }
+              { op: "1", text: "", needInput: false },
+              { op: "2", text: "", needInput: false },
+              { op: "3", text: "", needInput: false },
+              { op: "4", text: "", needInput: false }
             ],
             answer: "",
-            choose: false
+            answerText: "",
+            needInput: false
           },
           {
             no: "2",
             text: "",
             r: [
-              { op: "1", text: "", choose: "" },
-              { op: "2", text: "", choose: "" },
-              { op: "3", text: "", choose: "" },
-              { op: "4", text: "", choose: "" }
+              { op: "1", text: "", needInput: false },
+              { op: "2", text: "", needInput: false },
+              { op: "3", text: "", needInput: false },
+              { op: "4", text: "", needInput: false }
             ],
             answer: "",
-            choose: false
+            answerText: "",
+            needInput: false
           },
           {
             no: "3",
             text: "",
             r: [
-              { op: "1", text: "", choose: "" },
-              { op: "2", text: "", choose: "" },
-              { op: "3", text: "", choose: "" },
-              { op: "4", text: "", choose: "" }
+              { op: "1", text: "", needInput: false },
+              { op: "2", text: "", needInput: false },
+              { op: "3", text: "", needInput: false },
+              { op: "4", text: "", needInput: false }
             ],
             answer: "",
-            choose: false
+            answerText: "",
+            needInput: false
           },
           {
             no: "4",
             text: "",
             r: [
-              { op: "1", text: "", choose: "" },
-              { op: "2", text: "", choose: "" },
-              { op: "3", text: "", choose: "" },
-              { op: "4", text: "", choose: "" }
+              { op: "1", text: "", needInput: false },
+              { op: "2", text: "", needInput: false },
+              { op: "3", text: "", needInput: false },
+              { op: "4", text: "", needInput: false }
             ],
             answer: "",
-            choose: false
+            answerText: "",
+            needInput: false
+          },
+          {
+            no: "5",
+            text: "",
+            r: [
+              { op: "1", text: "", needInput: false },
+              { op: "2", text: "", needInput: false },
+              { op: "3", text: "", needInput: false },
+              { op: "4", text: "", needInput: false }
+            ],
+            answer: "",
+            answerText: "",
+            needInput: false
+          },
+          {
+            no: "6",
+            text: "",
+            r: [
+              { op: "1", text: "", needInput: false },
+              { op: "2", text: "", needInput: false },
+              { op: "3", text: "", needInput: false },
+              { op: "4", text: "", needInput: false }
+            ],
+            answer: "",
+            answerText: "",
+            needInput: false
+          },
+          {
+            no: "7",
+            text: "",
+            r: [
+              { op: "1", text: "", needInput: false },
+              { op: "2", text: "", needInput: false },
+              { op: "3", text: "", needInput: false },
+              { op: "4", text: "", needInput: false }
+            ],
+            answer: "",
+            answerText: "",
+            needInput: false
+          },
+          {
+            no: "8",
+            text: "",
+            r: [
+              { op: "1", text: "", needInput: false },
+              { op: "2", text: "", needInput: false },
+              { op: "3", text: "", needInput: false },
+              { op: "4", text: "", needInput: false }
+            ],
+            answer: "",
+            answerText: "",
+            needInput: false
+          },
+          {
+            no: "9",
+            text: "",
+            r: [
+              { op: "1", text: "", needInput: false },
+              { op: "2", text: "", needInput: false },
+              { op: "3", text: "", needInput: false },
+              { op: "4", text: "", needInput: false }
+            ],
+            answer: "",
+            answerText: "",
+            needInput: false
+          },
+          {
+            no: "10",
+            text: "",
+            r: [
+              { op: "1", text: "", needInput: false },
+              { op: "2", text: "", needInput: false },
+              { op: "3", text: "", needInput: false },
+              { op: "4", text: "", needInput: false }
+            ],
+            answer: "",
+            answerText: "",
+            needInput: false
           }
         ]
       }
     };
   },
-  watch: {
-    dataObject: {
-      // do stuff
-      handler(q) {
-        // do stuff
-        console.log(q);
-
-        q.questions.forEach(element => {
-          element.r.forEach(rr => {
-            element.choose = rr.choose;
-          });
-        });
-      },
-      deep: true
+  methods: {
+    checkQuestionText(itemNo){
+      if(!this.dataObject.questions[itemNo - 1].text){
+        this.dataObject.questions[itemNo - 1].needInput = true;
+      }else{
+         this.dataObject.questions[itemNo - 1].needInput = false;
+      }
+     
     },
-    selected(answer) {
-      switch (answer) {
-        case "1":
-          this.answer = this.r1;
-          break;
-        case "2":
-          this.answer = this.r2;
-          break;
-        case "3":
-          this.answer = this.r3;
-          break;
-        case "4":
-          this.answer = this.r4;
-          break;
+    inputClick(q) {
+      q.needInput = false;
+    },
+    sumitDataObject() {
+      this.dataObject.userName = this.userName;
+      //setQuestion
+      // console.log(this.$store.state.module.question.userName);
+      this.$store.commit("module/question/setQuestion", JSON.parse(JSON.stringify(this.dataObject)));
+      console.log(this.$store.state.module.question.question);
+      // console.log(this.dataObject);
+    },
+    radioChange(q, itemNo) {
+      this.checkQuestionText(itemNo);
+      if (q.text) {
+        this.dataObject.questions[itemNo - 1].answer = q.op;
+        this.dataObject.questions[itemNo - 1].answerText = q.text;
+      } else {
+        q.needInput = true;
       }
     }
+  },
+  mounted: function() {
+    this.userName = this.$store.state.module.question.userName;
   }
 };
 </script>

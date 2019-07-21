@@ -9,7 +9,6 @@ export default {
   methods: {
     into(){
       this.$router.push("/create/user");
-
     }
   },
 }
