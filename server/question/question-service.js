@@ -3,7 +3,7 @@ const questionModel=require('./question-model')
 
 const question={
     async questionUpload(data){
-        const resultData =await questionModel.questionUpload(data,);
+        const resultData =await questionModel.questionUpload(data);
         console.log("resultData:",resultData);
         return resultData;
     },
@@ -12,6 +12,11 @@ const question={
         // console.log("getAllQuestion resultData:",resultData);
         return resultData;
     },
+    async getQuestion(urlcode){
+        const resultData =await questionModel.getQuestion(urlcode);
+        // console.log("getAllQuestion resultData:",resultData);
+        return resultData;
+    }
 }
 
 module.exports = question

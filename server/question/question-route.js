@@ -31,7 +31,8 @@ router.use(bodyParser.urlencoded({
 router.use(bodyParser.json());
 
 router.post('/api/uploadQuestion', questionController.questionUpload);
-router.get('/api/getAllQuestion',questionController.getAllQuestion);
+router.get('/api/getAllQuestion', questionController.getAllQuestion);
+router.get('/api/getQuestion', questionController.getQuestion);
 module.exports = router;
 
 

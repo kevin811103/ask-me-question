@@ -7,6 +7,13 @@ const config = {
         PORT: '3306',        //端口
         HOST: '35.222.5.102'     //服务ip地址
     }
+    // database:{
+    //     DATABASE: 'test',    //数据库
+    //     USERNAME: 'root',    //用户
+    //     PASSWORD: '1234',     //密码
+    //     PORT: '3306',        //端口
+    //     HOST: 'localhost'     //服务ip地址
+    // }
 }
 // var connection = mysql.createConnection({
 //     host     : 'us-cdbr-iron-east-02.cleardb.net',

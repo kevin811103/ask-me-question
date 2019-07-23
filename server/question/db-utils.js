@@ -21,7 +21,7 @@ let query = function( sql, values ) {
           if ( err ) {
             reject( err )
           } else {
-            console.log("rows",rows)
+            // console.log("rows",rows)
             resolve( rows )
           }
           connection.release()
@@ -43,6 +43,10 @@ let findDataById = function( table,  id ) {
 }
 
 let findDataByUrlcode = function(  urlcode ) {
+  let  _sql =  "SELECT * FROM askmequestion WHERE urlcode = ? "
+  return query( _sql, [  urlcode ] )
+}
+let findDataByUrlcodeCount= function(  urlcode ) {
   let  _sql =  "SELECT COUNT(*) AS total_count FROM askmequestion WHERE urlcode = ? "
   return query( _sql, [  urlcode ] )
 }
@@ -86,6 +90,7 @@ module.exports = {
   createTable,
   findDataById,
   findDataByUrlcode,
+  findDataByUrlcodeCount,
   findDataByPage,
   deleteDataById,
   insertData,

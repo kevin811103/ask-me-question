@@ -30,7 +30,7 @@
     </div>
 
     <div>--------</div>-->
-    <b-button @click="getQuestion()">test</b-button>
+    <!-- <b-button @click="getQuestion()">test</b-button> -->
     <div v-for="item of dataObject.questions" :value="item.no" :key="item.no">
       <div>第{{item.no}}題</div>
       <b-form-group>
@@ -55,7 +55,7 @@
         </div>
       </b-form-group>
     </div>
-    <b-button @click="sumitDataObject()">sumit</b-button>
+    <b-button @click="sumitDataObject()">送出你的問題和答案</b-button>
   </div>
 </template>
 
@@ -243,7 +243,16 @@ export default {
           "module/question/questionUpload",
           JSON.parse(JSON.stringify(this.dataObject))
         )
-        .then(() => {})
+        .then((res) => {
+          console.log("success:",res);
+          if(res.urlcode){
+            this.$store.commit("module/question/setUrlcode",res.urlcode);
+            this.$router.push("/create/finish");
+          }else{
+            alert("發生錯誤請 再重新送出");
+          }
+          
+        })
         .then(error => {
           console.log(error);
         });

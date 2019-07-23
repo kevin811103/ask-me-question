@@ -64,52 +64,52 @@ function rand(orignText) {
 }
 
 
- async function test11(){
-//  let c = await gerentNumber();
-// http://fred-zone.blogspot.com/2017/04/javascript-asyncawait.html
- await setTimeout(() => {
-     console.log("eee");
- }, 3000);
-}
+//  async function test11(){
+// //  let c = await gerentNumber();
+// // http://fred-zone.blogspot.com/2017/04/javascript-asyncawait.html
+//  await setTimeout(() => {
+//      console.log("eee");
+//  }, 3000);
+// }
 const question = {
-    async questionUpload(object){
-        console.log("object",object);
+    async questionUpload(object) {
+        console.log("object", object);
         let result;
-        let urlcode =  "N5zA2zN7uX3d";
+        let urlcode = gerentNumber();
 
-        let count=0;
-        {
-            // urlcode =  gerentNumber();
-            console.log("URLCODE:",urlcode);
-            dbUtils.findDataByUrlcode(urlcode).then((res)=>{
-                console.log("res:",res);
-                console.log("重複了 要新產")
-                count=res[0].total_count;
-                urlcode =  gerentNumber();
-                console.log("重複了 要新產:",urlcode)
-            },(error)=>{
-                console.log("errror:",error)
+        // let count=0;
+        // {
+        //     // urlcode =  gerentNumber();
+        //     console.log("URLCODE:",urlcode);
+        //     dbUtils.findDataByUrlcodeCount(urlcode).then((res)=>{
+        //         console.log("res:",res);
+        //         console.log("重複了 要新產")
+        //         count=res[0].total_count;
+        //         urlcode =  gerentNumber();
+        //         console.log("重複了 要新產:",urlcode)
+        //     },(error)=>{
+        //         console.log("errror:",error)
+        //     })
+        // }
+        // while(count!==0);
+
+
+        //     console.log("finish:",count);
+
+        await dbUtils.insertData('askmequestion',
+            { user_name: object.userName, question: JSON.stringify(object.questions), urlcode: urlcode }).then((res) => {
+                console.log("1111", res);
+                result = res;
+
+            }, (error) => {
+                console.log("222", error)
             })
-        }
-        while(count!==0);
-          test11().then(async (res)=>{
 
-            console.log("finish:",count);
-            await dbUtils.insertData('askmequestion',
-                {user_name:object.userName,question:JSON.stringify(object.questions),urlcode:urlcode }).then((res)=>{
-                    console.log("1111",res);
-                    result=res;
-                    
-            },(error)=>{
-                console.log("222",error)
-            })
-
-        });
 
         // let result = await dbUtils.insertData('askmequestion',{user_name:object.userName,question:JSON.stringify(object.questions),urlcode:urlcode })
-        
-        
-        
+
+
+
         // if (Array.isArray(result) && result.length > 0) {
         //     // result = result[0]
         //     result = result
@@ -117,19 +117,32 @@ const question = {
         // } else {
         //     result = null
         // }
-        console.log("result:",result)
-        return result
+        console.log("result:", { result, urlcode: urlcode });
+        return { result, urlcode: urlcode };
     },
-    async getAllQuestion(){
-        let result = await dbUtils.select('askmequestion',"*")
+    async getAllQuestion() {
+        let result = await dbUtils.select('askmequestion', "*")
         if (Array.isArray(result) && result.length > 0) {
             // result = result[0]
             result = result
-            console.log("result",result);
+            console.log("result", result);
         } else {
             result = null
         }
         // console.log("result:",result)
+        return result
+    },
+    async getQuestion(urlcode) {
+        console.log("question-model-urlcode:", urlcode);
+        let result = await dbUtils.findDataByUrlcode(urlcode)
+        if (Array.isArray(result) && result.length > 0) {
+            result = result[0];
+            // result = result
+            // console.log("result", result);
+        } else {
+            result = null
+        }
+        // console.log("result:", result)
         return result
     }
 

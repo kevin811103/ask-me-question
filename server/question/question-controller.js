@@ -13,3 +13,15 @@ exports.getAllQuestion = async function (req, res) {
     // console.log("getAllQuestion", result);
     res.send(result);
 }
+exports.getQuestion =async function (req,res){
+    console.log("getQuestion", req.query);
+    const urlcode = req.query.urlcode;
+    
+    // console.log( req.query.urlcdode);
+    console.log("getQuestion urlcode:", urlcode);
+    // console.log("getQuestion urlcode:", urlcode);
+    
+    const result = await questionService.getQuestion(urlcode);
+    // console.log("getQuestion", result);
+    res.send(result);
+}
