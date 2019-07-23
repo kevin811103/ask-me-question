@@ -27,8 +27,8 @@ export const actions = {
     console.log('question', question)
 
     const data = await this.$axios.$post(
-      // 'http://icanhelpyou.ml:5914/api/uploadQuestion',
-      'http://localhost:5914/api/uploadQuestion',
+      'http://icanhelpyou.ml:5914/api/uploadQuestion',
+      // 'http://localhost:5914/api/uploadQuestion',
       question
     )
     console.log('data: ', data)
@@ -51,8 +51,8 @@ export const actions = {
   }, async getQuestion({ commit },urlcode) {
     // console.log("urlcode:", urlcode);
     const data = await this.$axios.$get(
-      // 'http://icanhelopyou.ml:5914/api/getQuestion?urlcode='+urlcode
-      'http://localhost:5914/api/getQuestion?urlcode='+urlcode
+      'http://icanhelopyou.ml:5914/api/getQuestion?urlcode='+urlcode
+      // 'http://localhost:5914/api/getQuestion?urlcode='+urlcode
     )
     // console.log('data: ', data)
     const res = data
