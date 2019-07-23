@@ -1,28 +1,115 @@
 
 
 const dbUtils = require('./db-utils')
+function gerentNumber() {
+    numText = "0123456789";
+    ucharText = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    lcharText = "abcdefghijklmnopqrstuvwxyz";
+    numText = rand(numText);
+    ucharText = rand(ucharText);
+    lcharText = rand(lcharText);
+
+    console.log(numText);
+    console.log(ucharText);
+    console.log(lcharText);
+    // 取十位數亂數取
+
+    let urlcode = "";
+
+
+    for (let i = 0; i < 12; i++) {
+        switch (i % 3) {
+            case 0:
+
+                let o = Math.floor(Math.random() * 26);
+                urlcode += ucharText.slice(o, o + 1);
+                //10
+                // console.log(Math.floor(Math.random()*10));
+                break;
+            case 1:
+                let n = Math.floor(Math.random() * 10);
+                urlcode += numText.slice(n, n + 1);
+                //26
+                break;
+            case 2:
+                let p = Math.floor(Math.random() * 26);
+                urlcode += lcharText.slice(p, p + 1);
+                //26
+                break;
+            default:
+                console.log(i % 3);
+                console.log("have number not do")
+                break;
+        }
+    }
+    console.log("urlCode:", urlcode);
+    return urlcode;
+}
+function rand(orignText) {
+    text = orignText.split("")
+    console.log(text);
+    text.forEach((element, index) => {
+
+        // console.log(   Math.floor(Math.random()*text.length));
+        let i = Math.floor(Math.random() * text.length)
+        console.log(i);
+        let temp = text[index];
+        text[index] = text[i];
+        text[i] = temp;
+    });
+    // text.forEach((el) => {
+    //     console.log(el);
+    // })
+    return text.join("");
+}
+
+
+ async function test11(){
+//  let c = await gerentNumber();
+// http://fred-zone.blogspot.com/2017/04/javascript-asyncawait.html
+ await setTimeout(() => {
+     console.log("eee");
+ }, 3000);
+}
 const question = {
-
-    // async loadImg(){
-    //     // let result = await dbUtils.insertData('Images',{PicNum:1234,Image:imgFile})
-    //     let _sql = ` SELECT * FROM Images where PicNum = 1234`;
-
-    //     let result = await dbUtils.query(_sql)
-    //     if (Array.isArray(result) && result.length > 0) {
-    //         // result = result[0]
-    //         result = result
-    //         console.log("result",result);
-    //     } else {
-    //         result = null
-    //     }
-    //     return result
-    // },
     async questionUpload(object){
         console.log("object",object);
+        let result;
+        let urlcode =  "N5zA2zN7uX3d";
+
+        let count=0;
+        {
+            // urlcode =  gerentNumber();
+            console.log("URLCODE:",urlcode);
+            dbUtils.findDataByUrlcode(urlcode).then((res)=>{
+                console.log("res:",res);
+                console.log("重複了 要新產")
+                count=res[0].total_count;
+                urlcode =  gerentNumber();
+                console.log("重複了 要新產:",urlcode)
+            },(error)=>{
+                console.log("errror:",error)
+            })
+        }
+        while(count!==0);
+          test11().then(async (res)=>{
+
+            console.log("finish:",count);
+            await dbUtils.insertData('askmequestion',
+                {user_name:object.userName,question:JSON.stringify(object.questions),urlcode:urlcode }).then((res)=>{
+                    console.log("1111",res);
+                    result=res;
+                    
+            },(error)=>{
+                console.log("222",error)
+            })
+
+        });
+
+        // let result = await dbUtils.insertData('askmequestion',{user_name:object.userName,question:JSON.stringify(object.questions),urlcode:urlcode })
         
-
-
-        let result = await dbUtils.insertData('askmequestion',{user_name:object.userName,question:JSON.stringify(object.questions)  })
+        
+        
         // if (Array.isArray(result) && result.length > 0) {
         //     // result = result[0]
         //     result = result

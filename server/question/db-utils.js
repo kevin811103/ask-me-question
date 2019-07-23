@@ -42,6 +42,10 @@ let findDataById = function( table,  id ) {
   return query( _sql, [ table, id, start, end ] )
 }
 
+let findDataByUrlcode = function(  urlcode ) {
+  let  _sql =  "SELECT COUNT(*) AS total_count FROM askmequestion WHERE urlcode = ? "
+  return query( _sql, [  urlcode ] )
+}
 
 let findDataByPage = function( table, keys, start, end ) {
   let  _sql =  "SELECT ?? FROM ??  LIMIT ? , ?"
@@ -81,6 +85,7 @@ module.exports = {
   query,
   createTable,
   findDataById,
+  findDataByUrlcode,
   findDataByPage,
   deleteDataById,
   insertData,
