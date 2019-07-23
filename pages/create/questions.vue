@@ -31,14 +31,15 @@
 
     <div>--------</div>-->
     <!-- <b-button @click="getQuestion()">test</b-button> -->
+    <!-- v-model="q.choose" -->
     <div v-for="item of dataObject.questions" :value="item.no" :key="item.no">
       <div>第{{item.no}}題</div>
       <b-form-group>
-        <b-form-input v-model="item.text"></b-form-input>
-        <b-alert v-model="item.needInput" variant="danger">請輸入問題文字</b-alert>
+        <b-form-input v-model="item.text" @click="questionTextClick(item)"></b-form-input>
+        <b-alert v-model="item.needInput" variant="danger" >請輸入問題文字</b-alert>
         <div v-for="(q,index) in item.r" :value="q.op" :key="q.op">
           <b-form-radio
-            v-model="q.choose"
+            
             :name="item.no+'q'"
             @change="radioChange(q,item.no)"
             :value="index+1"
@@ -209,6 +210,11 @@ export default {
     };
   },
   methods: {
+    questionTextClick(item){
+      console.log(item);
+      item.needInput=false;
+
+    },
     getQuestion() {
       this.$store
         .dispatch("module/question/getQuestionAll")
@@ -261,12 +267,14 @@ export default {
     },
     radioChange(q, itemNo) {
       this.checkQuestionText(itemNo);
+      console.log(q.op,":",itemNo)
       if (q.text) {
         this.dataObject.questions[itemNo - 1].answer = q.op;
         this.dataObject.questions[itemNo - 1].answerText = q.text;
       } else {
         q.needInput = true;
       }
+      console.log("ansobj:",this.dataObject.questions);
     }
   },
   mounted: function() {
