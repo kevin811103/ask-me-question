@@ -8,6 +8,7 @@
 export default {
   methods: {
     into(){
+	console.log("dointo");
       this.$router.push("/create/user");
     }
   },

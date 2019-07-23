@@ -230,6 +230,7 @@ export default {
       q.needInput = false;
     },
     sumitDataObject() {
+	console.log("doSumitDataObject");
       this.dataObject.userName = this.userName;
       //setQuestion
       // console.log(this.$store.state.module.question.userName);
