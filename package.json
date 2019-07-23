@@ -8,7 +8,7 @@
     "test": "jest",
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
     "build": "nuxt build",
-    "start": "pm2 start ./node_modules/nuxt/bin/nuxt-start -i max --attach",
+    "start": "pm2 start ./node_modules/nuxt/bin/nuxt-start --name 'ask-me-question' -i max --attach",
     "generate": "nuxt generate"
   },
   "config": {
