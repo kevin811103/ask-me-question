@@ -1,6 +1,9 @@
 <template>
   <div >
     <b-button @click="into()">來測試看看你朋友有多了解你</b-button>
+      <adsbygoogle />
+
+      <adsbygoogle />
   </div>
 </template>
 
