@@ -28,7 +28,7 @@ export const actions = {
     console.log('question', question)
     //        state.askmequestionUrl +  '/uploadQuestion',
     const data = await this.$axios.$post(
-      'http://104.154.153.82:5914/api/uploadQuestion',
+      '/api/uploadQuestion',
       question
     )
     // 'http://icanhelpyou.ml:5914/api/uploadQuestion',
@@ -45,7 +45,7 @@ export const actions = {
   async getQuestionAll({ commit }) {
 
     const data = await this.$axios.$get(
-      'http://localhost:5914/api/getAllQuestion'
+      '/api/getAllQuestion'
     )
     console.log('data: ', data)
     const res = data
