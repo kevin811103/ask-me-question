@@ -4,7 +4,7 @@ export const state = () => ({
   userName: "",
   question: {},
   // askmequestionUrl: "https://askmequestion.tk/api",
-  askmequestionUrl: "http://icanhelpyou.ml:5914/api",
+  askmequestionUrl: "http://localhost:5914/api",
   urlcode: ""
 })
 export const mutations = {
