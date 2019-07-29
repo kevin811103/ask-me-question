@@ -38,6 +38,9 @@ router.get('/api/getQuestion', questionController.getQuestion);
 router.post('/api/saveAnswerObject',questionController.saveAnswerObject);
 
 
+router.get("/test",function(req,res){
+    res.send("success");
+})
 module.exports = router;
 
 

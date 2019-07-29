@@ -15,12 +15,12 @@ const question = require('./question/question-route');
 app.use("/", question)
 
 
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({
+//   extended: true
+// }));
+// app.use(bodyParser.json());
 
-const dbUtils = require('./question/db-utils')
+// const dbUtils = require('./question/db-utils')
 
 // app.post('/api/saveQuestion', async function (req, res) {
 //   console.log(req.body)
@@ -33,15 +33,15 @@ const dbUtils = require('./question/db-utils')
 
 // });
 
-app.post('/test', async function (req, res) {
-  console.log(req.body)
+// app.post('/test', async function (req, res) {
+//   console.log(req.body)
 
-  const data = await dbUtils.findDataByIdTest("askmequestion",
-    4);
-  console.log(data);
+//   const data = await dbUtils.findDataByIdTest("askmequestion",
+//     4);
+//   console.log(data);
 
-  res.send("hi")  //return 
-})
+//   res.send("hi")  //return 
+// })
 
 async function start() {
   // Init Nuxt.js
