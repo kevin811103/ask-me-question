@@ -24,15 +24,15 @@ export const mutations = {
 
 export const actions = {
   // async questionUpload
-  async questionUpload({ commit,state }, question) {
+  async questionUpload({ commit, state }, question) {
     console.log('question', question)
-
+    //        state.askmequestionUrl +  '/uploadQuestion',
     const data = await this.$axios.$post(
-       state.askmequestionUrl +  '/uploadQuestion',
+      'http://icanhelpyou.ml:5914/api/uploadQuestion',
       question
     )
     // 'http://icanhelpyou.ml:5914/api/uploadQuestion',
-          // 'http://localhost:5914/api/uploadQuestion',
+    // 'http://localhost:5914/api/uploadQuestion',
     console.log('data: ', data)
     if (data.result.insertId > 0) {
       const res = data
@@ -50,13 +50,14 @@ export const actions = {
     console.log('data: ', data)
     const res = data
     return { status: 200, res }
-  }, async getQuestion({ commit,state },urlcode) {
+  }, async getQuestion({ commit, state }, urlcode) {
     // console.log("urlcode:", urlcode);
     const data = await this.$axios.$get(
-	state.askmequestionUrl +'/api/getQuestion?urlcode='+urlcode
+      'http://icanhelpyou.ml:5914/api/getQuestion?urlcode=' + urlcode
+      // state.askmequestionUrl + '/api/getQuestion?urlcode=' + urlcode
     )
-          // 'http://icanhelopyou.ml:5914/api/getQuestion?urlcode='+urlcode
-         // 'http://localhost:5914/api/getQuestion?urlcode='+urlcode
+    // 'http://icanhelopyou.ml:5914/api/getQuestion?urlcode='+urlcode
+    // 'http://localhost:5914/api/getQuestion?urlcode='+urlcode
     // console.log('data: ', data)
     const res = data
     return { status: 200, res }

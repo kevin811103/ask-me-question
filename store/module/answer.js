@@ -29,7 +29,8 @@ export const actions = {
     async saveAnswerObject({ commit,state }, answerObject) {
         console.log('answerObject', answerObject);
         const data = await this.$axios.$post(
-            state.askmequestionUrl + '/saveAnswerObject',
+            'http://icanhelpyou.ml:5914/api/saveAnswerObject',
+            // state.askmequestionUrl + '/saveAnswerObject',
             answerObject
         )
         console.log('data: ', data);
