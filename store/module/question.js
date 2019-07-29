@@ -3,7 +3,8 @@
 export const state = () => ({
   userName: "",
   question: {},
-  askmequestionUrl: "https://askmequestion.ml/answer/",
+  // askmequestionUrl: "https://askmequestion.tk/api",
+  askmequestionUrl: "http://icanhelpyou.ml:5914/api",
   urlcode: ""
 })
 export const mutations = {
@@ -23,11 +24,11 @@ export const mutations = {
 
 export const actions = {
   // async questionUpload
-  async questionUpload({ commit }, question) {
+  async questionUpload({ commit,state }, question) {
     console.log('question', question)
 
     const data = await this.$axios.$post(
-      'http://localhost:5914/api/uploadQuestion',
+       state.askmequestionUrl +  '/uploadQuestion',
       question
     )
     // 'http://icanhelpyou.ml:5914/api/uploadQuestion',
@@ -49,13 +50,13 @@ export const actions = {
     console.log('data: ', data)
     const res = data
     return { status: 200, res }
-  }, async getQuestion({ commit },urlcode) {
+  }, async getQuestion({ commit,state },urlcode) {
     // console.log("urlcode:", urlcode);
     const data = await this.$axios.$get(
-      'http://localhost:5914/api/getQuestion?urlcode='+urlcode
+	state.askmequestionUrl +'/api/getQuestion?urlcode='+urlcode
     )
           // 'http://icanhelopyou.ml:5914/api/getQuestion?urlcode='+urlcode
-          // 'http://localhost:5914/api/getQuestion?urlcode='+urlcode
+         // 'http://localhost:5914/api/getQuestion?urlcode='+urlcode
     // console.log('data: ', data)
     const res = data
     return { status: 200, res }
