@@ -77,12 +77,12 @@ export default {
         questions: [
           {
             no: "1",
-            text: "",
+            text: "1",
             r: [
-              { op: "1", text: "", needInput: false },
-              { op: "2", text: "", needInput: false },
-              { op: "3", text: "", needInput: false },
-              { op: "4", text: "", needInput: false }
+              { op: "1", text: "11", needInput: false },
+              { op: "2", text: "12", needInput: false },
+              { op: "3", text: "13", needInput: false },
+              { op: "4", text: "14", needInput: false }
             ],
             answer: "",
             answerText: "",
@@ -90,12 +90,12 @@ export default {
           },
           {
             no: "2",
-            text: "",
+            text: "2",
             r: [
-              { op: "1", text: "", needInput: false },
-              { op: "2", text: "", needInput: false },
-              { op: "3", text: "", needInput: false },
-              { op: "4", text: "", needInput: false }
+              { op: "1", text: "21", needInput: false },
+              { op: "2", text: "22", needInput: false },
+              { op: "3", text: "23", needInput: false },
+              { op: "4", text: "24", needInput: false }
             ],
             answer: "",
             answerText: "",
@@ -103,12 +103,12 @@ export default {
           },
           {
             no: "3",
-            text: "",
+            text: "3",
             r: [
-              { op: "1", text: "", needInput: false },
-              { op: "2", text: "", needInput: false },
-              { op: "3", text: "", needInput: false },
-              { op: "4", text: "", needInput: false }
+              { op: "1", text: "31", needInput: false },
+              { op: "2", text: "32", needInput: false },
+              { op: "3", text: "33", needInput: false },
+              { op: "4", text: "34", needInput: false }
             ],
             answer: "",
             answerText: "",
@@ -116,12 +116,12 @@ export default {
           },
           {
             no: "4",
-            text: "",
+            text: "4",
             r: [
-              { op: "1", text: "", needInput: false },
-              { op: "2", text: "", needInput: false },
-              { op: "3", text: "", needInput: false },
-              { op: "4", text: "", needInput: false }
+              { op: "1", text: "41", needInput: false },
+              { op: "2", text: "42", needInput: false },
+              { op: "3", text: "43", needInput: false },
+              { op: "4", text: "44", needInput: false }
             ],
             answer: "",
             answerText: "",
@@ -129,12 +129,12 @@ export default {
           },
           {
             no: "5",
-            text: "",
+            text: "5",
             r: [
-              { op: "1", text: "", needInput: false },
-              { op: "2", text: "", needInput: false },
-              { op: "3", text: "", needInput: false },
-              { op: "4", text: "", needInput: false }
+              { op: "1", text: "51", needInput: false },
+              { op: "2", text: "52", needInput: false },
+              { op: "3", text: "53", needInput: false },
+              { op: "4", text: "54", needInput: false }
             ],
             answer: "",
             answerText: "",
@@ -142,12 +142,12 @@ export default {
           },
           {
             no: "6",
-            text: "",
+            text: "6",
             r: [
-              { op: "1", text: "", needInput: false },
-              { op: "2", text: "", needInput: false },
-              { op: "3", text: "", needInput: false },
-              { op: "4", text: "", needInput: false }
+              { op: "1", text: "61", needInput: false },
+              { op: "2", text: "62", needInput: false },
+              { op: "3", text: "63", needInput: false },
+              { op: "4", text: "64", needInput: false }
             ],
             answer: "",
             answerText: "",
@@ -155,12 +155,12 @@ export default {
           },
           {
             no: "7",
-            text: "",
+            text: "7",
             r: [
-              { op: "1", text: "", needInput: false },
-              { op: "2", text: "", needInput: false },
-              { op: "3", text: "", needInput: false },
-              { op: "4", text: "", needInput: false }
+              { op: "1", text: "71", needInput: false },
+              { op: "2", text: "72", needInput: false },
+              { op: "3", text: "73", needInput: false },
+              { op: "4", text: "74", needInput: false }
             ],
             answer: "",
             answerText: "",
@@ -168,12 +168,12 @@ export default {
           },
           {
             no: "8",
-            text: "",
+            text: "8",
             r: [
-              { op: "1", text: "", needInput: false },
-              { op: "2", text: "", needInput: false },
-              { op: "3", text: "", needInput: false },
-              { op: "4", text: "", needInput: false }
+              { op: "1", text: "81", needInput: false },
+              { op: "2", text: "82", needInput: false },
+              { op: "3", text: "83", needInput: false },
+              { op: "4", text: "84", needInput: false }
             ],
             answer: "",
             answerText: "",
@@ -181,12 +181,12 @@ export default {
           },
           {
             no: "9",
-            text: "",
+            text: "9",
             r: [
-              { op: "1", text: "", needInput: false },
-              { op: "2", text: "", needInput: false },
-              { op: "3", text: "", needInput: false },
-              { op: "4", text: "", needInput: false }
+              { op: "1", text: "91", needInput: false },
+              { op: "2", text: "92", needInput: false },
+              { op: "3", text: "93", needInput: false },
+              { op: "4", text: "94", needInput: false }
             ],
             answer: "",
             answerText: "",
@@ -194,12 +194,12 @@ export default {
           },
           {
             no: "10",
-            text: "",
+            text: "10",
             r: [
-              { op: "1", text: "", needInput: false },
-              { op: "2", text: "", needInput: false },
-              { op: "3", text: "", needInput: false },
-              { op: "4", text: "", needInput: false }
+              { op: "1", text: "101", needInput: false },
+              { op: "2", text: "102", needInput: false },
+              { op: "3", text: "103", needInput: false },
+              { op: "4", text: "104", needInput: false }
             ],
             answer: "",
             answerText: "",

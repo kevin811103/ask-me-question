@@ -33,6 +33,12 @@ router.use(bodyParser.json());
 router.post('/api/uploadQuestion', questionController.questionUpload);
 router.get('/api/getAllQuestion', questionController.getAllQuestion);
 router.get('/api/getQuestion', questionController.getQuestion);
+
+//answer
+router.post('/api/saveAnswerObject',questionController.saveAnswerObject);
+
+
 module.exports = router;
 
 
+// node express

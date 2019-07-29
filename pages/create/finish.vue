@@ -20,12 +20,12 @@ export default {
   mounted() {
     this.urlCode =
       window.location.origin +
-      "/answer/" +
+      "/score/" +
       this.$store.state.module.question.urlcode;
     console.log(
       "this.urlCode:",
       window.location.origin +
-        "/answer/" +
+        "/score/" +
         this.$store.state.module.question.urlcode
     );
     console.log("this.urlCode:", this.urlCode);

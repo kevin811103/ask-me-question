@@ -41,6 +41,11 @@ let findDataById = function( table,  id ) {
   let  _sql =  "SELECT * FROM ?? WHERE id = ? "
   return query( _sql, [ table, id, start, end ] )
 }
+let findDataByIdTest = function( table,  id ) {
+  let  _sql =  "SELECT * FROM askmequestion"
+  return query( _sql )
+}
+
 
 let findDataByUrlcode = function(  urlcode ) {
   let  _sql =  "SELECT * FROM askmequestion WHERE urlcode = ? "
@@ -65,6 +70,10 @@ let insertData = function( table, values ) {
 
 let updateData = function( table, values, id ) {
   let _sql = "UPDATE ?? SET ? WHERE id = ?"
+  return query( _sql, [ table, values, id ] )
+}
+let updateDataWithUrlcode =  function( table, values, id ) {
+  let _sql = "UPDATE ?? SET ? WHERE urlcode = ?"
   return query( _sql, [ table, values, id ] )
 }
 
@@ -95,6 +104,8 @@ module.exports = {
   deleteDataById,
   insertData,
   updateData,
+  updateDataWithUrlcode,
   select,
   count,
+  findDataByIdTest
 }

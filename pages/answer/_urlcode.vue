@@ -27,9 +27,8 @@
             :value="index+1"
             style="margin:5px"
           >
-            <b-form-input v-model="q.text"  readonly></b-form-input>
+            <b-form-input v-model="q.text" readonly></b-form-input>
           </b-form-radio>
-
         </div>
 
         <!-- <div>
@@ -81,23 +80,23 @@ export default {
       userName: "",
       needAlert: false,
       reAnserObject: {
+        // urlcode: this.$route.params.urlcode,
         userName: "",
         questions: [
-            { no: "1", answerOp: "", answerText: "" },
-            { no: "2", answerOp: "", answerText: "" },
-            { no: "3", answerOp: "", answerText: "" },
-            { no: "4", answerOp: "", answerText: "" },
-            { no: "5", answerOp: "", answerText: "" },
-            { no: "6", answerOp: "", answerText: "" },
-            { no: "7", answerOp: "", answerText: "" },
-            { no: "8", answerOp: "", answerText: "" },
-            { no: "9", answerOp: "", answerText: "" },
-            { no: "10", answerOp: "", answerText: "" }
+          { no: "1", answerOp: "", answerText: "" },
+          { no: "2", answerOp: "", answerText: "" },
+          { no: "3", answerOp: "", answerText: "" },
+          { no: "4", answerOp: "", answerText: "" },
+          { no: "5", answerOp: "", answerText: "" },
+          { no: "6", answerOp: "", answerText: "" },
+          { no: "7", answerOp: "", answerText: "" },
+          { no: "8", answerOp: "", answerText: "" },
+          { no: "9", answerOp: "", answerText: "" },
+          { no: "10", answerOp: "", answerText: "" }
         ],
-        answerRight:[],//題號
-        score:0
-      },
-      
+        answerRight: [], //題號
+        score: 0
+      }
     };
   },
   mounted() {
@@ -115,6 +114,7 @@ export default {
           this.$store.commit("module/answer/setAnswerObject", res.res);
           this.answerObject = this.$store.state.module.answer.answerObject;
           // console.log("answerObject:", this.answerObject);
+          console.log("this.answerObject:", this.answerObject);
           this.questionList = JSON.parse(this.answerObject.question);
           console.log("this.questionList:", this.questionList);
         } else {
@@ -133,23 +133,80 @@ export default {
       console.log("qanswerNo:", answerNo);
       console.log("questionNo:", questionNo);
       console.log("在第", questionNo, "題回答答案是", answerNo, ":", text);
-      this.reAnserObject.questions[parseInt(questionNo)-1].answerOp=answerNo;
-            this.reAnserObject.questions[parseInt(questionNo)-1].answerText=text;
+      this.reAnserObject.questions[
+        parseInt(questionNo) - 1
+      ].answerOp = answerNo;
+      this.reAnserObject.questions[parseInt(questionNo) - 1].answerText = text;
     },
     inputClick() {},
     sumitDataObject() {
       // 比對答案送出成績 並跳轉
-      
-      for(let no= 0 ;no <10; no ++){
+
+      for (let no = 0; no < 10; no++) {
         console.log(this.questionList[no].answer);
         console.log(this.reAnserObject.questions[no].answerOp);
-        if(this.questionList[no].answer==this.reAnserObject.questions[no].answerOp){
-          this.reAnserObject.score+=1;
-          this.reAnserObject.answerRight.push(no+1);
+        if (
+          this.questionList[no].answer ==
+          this.reAnserObject.questions[no].answerOp
+        ) {
+          this.reAnserObject.score += 1;
+          this.reAnserObject.answerRight.push(no + 1);
         }
       }
+      // 將回答者姓名寫入
+      this.reAnserObject.userName = this.userName;
+      // console.log("123:", this.reAnserObject); //[]
+      // console.log("answerObject:", this.answerObject.answer); //[]
+      // this.answerObject.answer.push("555");
+      // console.log(this.answerObject.answer.length);
+      // console.log(this.answerObject.answer);
+
+      // if (!this.answerObject.answer) {
+      //   let saveAnswerObject = { savedata: [] };
+      //   saveAnswerObject.savedata.push(this.reAnserObject);
+      //   this.answerObject.answer = saveAnswerObject.savedata;
+      // } else {
+      //   this.answerObject.answer.push(this.reAnserObject);
+      // }
+      console.log(this.answerObject);
+      let tempArray = JSON.parse(this.answerObject.answer);
+      console.log("tempArray",tempArray);
+      // tempArray.push("22222");
+console.log('tempArray.length:',tempArray.length);
+
+      if(tempArray.length==0){
+        console.log('is length');
+      }
+      tempArray.push(this.reAnserObject);
       console.log(this.reAnserObject);
-      alert('答對了'+this.reAnserObject.score+'題')
+      alert("答對了" + this.reAnserObject.score + "題");
+      if (this.reAnserObject.length == 0) {
+        console.log("null");
+      }
+      // console.log(
+      //   "aaa:",
+      //   JSON.stringify(this.reAnserObject) + this.answerObject.answer
+      // );
+
+      this.$store
+        // .dispatch("module/answer/saveAnswerObject", this.reAnserObject)
+        .dispatch("module/answer/saveAnswerObject", {
+          urlcode: this.$route.params.urlcode,
+          answerList: JSON.stringify(tempArray)
+          // this.answerObject.answer
+          // JSON.stringify(this.reAnserObject) +","+ this.answerObject.answer
+        })
+        .then(res => {
+          console.log("存完:", res);
+          if (res.status == 200) {
+            console.log("finish");
+
+            this.$router.push("/score/" + this.$route.params.urlcode);
+          } else {
+          }
+        });
+
+      // console.log("success:", res);
     },
     showModal() {
       this.modalShow = true;

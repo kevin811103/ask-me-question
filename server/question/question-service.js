@@ -16,6 +16,11 @@ const question={
         const resultData =await questionModel.getQuestion(urlcode);
         // console.log("getAllQuestion resultData:",resultData);
         return resultData;
+    },
+    async saveAnswerObject(data){
+        const resultData =await questionModel.saveAnswerObject(data);
+        console.log("saveAnswerObject resultData:",resultData);
+        return resultData;
     }
 }
 

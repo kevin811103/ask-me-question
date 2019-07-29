@@ -1,9 +1,9 @@
 <template>
   <div >
-    <b-button @click="into()">來測試看看你朋友有多了解你</b-button>
-      <adsbygoogle />
+    <b-button @click="into()">設計問券</b-button>
+      <!-- <adsbygoogle />
 
-      <adsbygoogle />
+      <adsbygoogle /> -->
   </div>
 </template>
 

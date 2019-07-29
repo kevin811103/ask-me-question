@@ -95,9 +95,9 @@ const question = {
 
 
         //     console.log("finish:",count);
-
+        console.log("要傳出去的資料",JSON.stringify(object.questions));
         await dbUtils.insertData('askmequestion',
-            { user_name: object.userName, question: JSON.stringify(object.questions), urlcode: urlcode }).then((res) => {
+            { user_name: object.userName, question: JSON.stringify(object.questions), urlcode: urlcode ,answer:JSON.stringify([])}).then((res) => {
                 console.log("1111", res);
                 result = res;
 
@@ -135,6 +135,22 @@ const question = {
     async getQuestion(urlcode) {
         console.log("question-model-urlcode:", urlcode);
         let result = await dbUtils.findDataByUrlcode(urlcode)
+        if (Array.isArray(result) && result.length > 0) {
+            result = result[0];
+            // result = result
+            // console.log("result", result);
+        } else {
+            result = null
+        }
+        // console.log("result:", result)
+        return result
+    },
+    async saveAnswerObject(data){
+        console.log("saveAnswerObject model: ",data);
+        let answerObj=[]
+        let result =await dbUtils.updateDataWithUrlcode("askmequestion",{answer: data.answerList},data.urlcode)
+         console.log("11result:", result);
+        // let result = await dbUtils.findDataByUrlcode(urlcode)
         if (Array.isArray(result) && result.length > 0) {
             result = result[0];
             // result = result

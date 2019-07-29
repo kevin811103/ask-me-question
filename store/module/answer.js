@@ -5,10 +5,10 @@ export const state = () => ({
     // question: {},
     // askmequestionUrl: "https://askmequestion.ml/answer/",
     // urlcode: ""
-    answerObject:{}
+    answerObject: {}
 })
 export const mutations = {
-    setAnswerObject(state,obj){
+    setAnswerObject(state, obj) {
         state.answerObject = obj;
     },
     // setName(state, test) {
@@ -26,6 +26,22 @@ export const mutations = {
 }
 
 export const actions = {
+    async saveAnswerObject({ commit }, answerObject) {
+        console.log('answerObject', answerObject);
+        const data = await this.$axios.$post(
+            'http://localhost:5914/api/saveAnswerObject',
+            answerObject
+        )
+        console.log('data: ', data);
+        return { status: 200, message: "ok"};
+        // if (data.result.insertId > 0) {
+        //     const res = data
+        //     return { status: 200, message: "ok", urlcode: data.urlcode };
+        // } else {
+        //     const res = data
+        //     return { status: 201, message: "error" };
+        // }
+    }
     // // async questionUpload
     // async questionUpload({ commit }, question) {
     //   console.log('question', question)

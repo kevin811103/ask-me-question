@@ -27,10 +27,10 @@ export const actions = {
     console.log('question', question)
 
     const data = await this.$axios.$post(
-          'http://icanhelpyou.ml:5914/api/uploadQuestion',
+      'http://localhost:5914/api/uploadQuestion',
       question
     )
-
+    // 'http://icanhelpyou.ml:5914/api/uploadQuestion',
           // 'http://localhost:5914/api/uploadQuestion',
     console.log('data: ', data)
     if (data.result.insertId > 0) {
@@ -52,10 +52,10 @@ export const actions = {
   }, async getQuestion({ commit },urlcode) {
     // console.log("urlcode:", urlcode);
     const data = await this.$axios.$get(
-'http://icanhelopyou.ml:5914/api/getQuestion?urlcode='+urlcode
+      'http://localhost:5914/api/getQuestion?urlcode='+urlcode
     )
           // 'http://icanhelopyou.ml:5914/api/getQuestion?urlcode='+urlcode
-          'http://localhost:5914/api/getQuestion?urlcode='+urlcode
+          // 'http://localhost:5914/api/getQuestion?urlcode='+urlcode
     // console.log('data: ', data)
     const res = data
     return { status: 200, res }

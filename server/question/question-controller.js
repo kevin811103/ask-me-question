@@ -25,3 +25,13 @@ exports.getQuestion =async function (req,res){
     // console.log("getQuestion", result);
     res.send(result);
 }
+exports.saveAnswerObject = async function (req,res){
+    console.log("saveAnswerObject",req.body);
+    const data =req.body ;
+    const result = await questionService.saveAnswerObject(data);
+    console.log("saveAnswerObject", result);
+    res.send(result);
+
+    // res.send(result);
+}
+
