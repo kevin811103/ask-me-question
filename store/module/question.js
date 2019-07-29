@@ -28,7 +28,7 @@ export const actions = {
     console.log('question', question)
     //        state.askmequestionUrl +  '/uploadQuestion',
     const data = await this.$axios.$post(
-      '/api/uploadQuestion',
+      'http://icanhelpyou.ml:5914/api/uploadQuestion',
       question
     )
     // 'http://icanhelpyou.ml:5914/api/uploadQuestion',
@@ -53,7 +53,7 @@ export const actions = {
   }, async getQuestion({ commit, state }, urlcode) {
     // console.log("urlcode:", urlcode);
     const data = await this.$axios.$get(
-      'http://104.154.153.82:5914/api/getQuestion?urlcode=' + urlcode
+      'http://icanhelpyou.ml:5914/api/getQuestion?urlcode=' + urlcode
       // state.askmequestionUrl + '/api/getQuestion?urlcode=' + urlcode
     )
     // 'http://icanhelopyou.ml:5914/api/getQuestion?urlcode='+urlcode
