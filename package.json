@@ -11,12 +11,6 @@
     "start": "pm2 start ./node_modules/nuxt/bin/nuxt.js --name 'ask-me-question' -i max --attach",
     "generate": "nuxt generate"
   },
-  "config": {
-    "nuxt": {
-      "host": "0.0.0.0",
-      "port": "5914"
-    }
-  },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/google-adsense": "^1.1.3",
