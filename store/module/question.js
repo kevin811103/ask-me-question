@@ -3,7 +3,7 @@
 export const state = () => ({
   userName: "",
   question: {},
-  askmequestionUrl: "http://icanhelpyou.ml:5914/api",
+  askmequestionUrl: "http://localhost:5914/api",
   // askmequestionUrl: "http://localhost:5914/api",
   urlcode: ""
 })
@@ -28,7 +28,7 @@ export const actions = {
     console.log('question', question)
     //        state.askmequestionUrl +  '/uploadQuestion',
     const data = await this.$axios.$post(
-      'http://icanhelpyou.ml:5914/api/uploadQuestion',
+      'http://localhost:5914/api/uploadQuestion',
       question
     )
     // 'http://icanhelpyou.ml:5914/api/uploadQuestion',
@@ -53,7 +53,7 @@ export const actions = {
   }, async getQuestion({ commit, state }, urlcode) {
     // console.log("urlcode:", urlcode);
     const data = await this.$axios.$get(
-      'http://icanhelpyou.ml:5914/api/getQuestion?urlcode=' + urlcode
+      'http://localhost:5914/api/getQuestion?urlcode=' + urlcode
       // state.askmequestionUrl + '/api/getQuestion?urlcode=' + urlcode
     )
     // 'http://icanhelopyou.ml:5914/api/getQuestion?urlcode='+urlcode
