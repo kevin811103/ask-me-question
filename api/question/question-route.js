@@ -18,6 +18,7 @@ router.post('/saveAnswerObject',questionController.saveAnswerObject);
 
 
 router.get("/test",function(req,res){
+    console.log("doTest");
     res.send("success");
 })
 module.exports = router;
