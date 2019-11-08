@@ -9,15 +9,15 @@ router.use(bodyParser.urlencoded({
 }));
 router.use(bodyParser.json());
 
-router.post('/uploadQuestion', questionController.questionUpload);
-router.get('/getAllQuestion', questionController.getAllQuestion);
-router.get('/getQuestion', questionController.getQuestion);
+router.post('uploadQuestion', questionController.questionUpload);
+router.get('getAllQuestion', questionController.getAllQuestion);
+router.get('getQuestion', questionController.getQuestion);
 
 //answer
-router.post('/saveAnswerObject',questionController.saveAnswerObject);
+router.post('saveAnswerObject',questionController.saveAnswerObject);
 
 
-router.get("/test",function(req,res){
+router.get("test",function(req,res){
     res.send("success");
 })
 module.exports = router;
