@@ -11,18 +11,24 @@ const pool = mysql.createPool({
 
 let query = function( sql, values ) {
   return new Promise(( resolve, reject ) => {
+      console.log("test1");
     pool.getConnection(function(err, connection) {
       if (err) {
+        console.log("test2");
         resolve( err )
+        
       } else {
         console.log("來連線");
         connection.query(sql, values, ( err, rows) => {
 
           if ( err ) {
+            console.log("test3");
             reject( err )
           } else {
+            console.log("test4");
             // console.log("rows",rows)
             resolve( rows )
+
           }
           connection.release()
         })
