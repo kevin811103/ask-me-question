@@ -5,6 +5,7 @@ module.exports = {
     port: 5914, // default: 3000
     host: '0.0.0.0' // default: localhost
   },
+  
   /*
   ** Headers of the page
   */
@@ -67,5 +68,10 @@ module.exports = {
     */
     extend(config, ctx) {
     }
-  }
+  },
+  //serverMiddleware
+  serverMiddleware: [
+    // API middleware
+    '~/api/index.js'
+  ]
 }
