@@ -3,7 +3,7 @@
 export const state = () => ({
     // userName: "",
     // question: {},
-    askmequestionUrl: "http://http://35.247.12.200:5914/api",
+    askmequestionUrl: "http://35.247.12.200:5914/api",
     // urlcode: ""
     answerObject: {}
 })
@@ -29,7 +29,7 @@ export const actions = {
     async saveAnswerObject({ commit,state }, answerObject) {
         console.log('answerObject', answerObject);
         const data = await this.$axios.$post(
-            'http://http://35.247.12.200:5914/api/saveAnswerObject',
+            'http://35.247.12.200:5914/api/saveAnswerObject',
             // state.askmequestionUrl + '/saveAnswerObject',
             answerObject
         )
