@@ -3,7 +3,7 @@
 export const state = () => ({
     // userName: "",
     // question: {},
-    askmequestionUrl: "http://localhost:5914/api",
+    askmequestionUrl: "http://http://35.247.12.200:5914/api",
     // urlcode: ""
     answerObject: {}
 })
@@ -29,7 +29,7 @@ export const actions = {
     async saveAnswerObject({ commit,state }, answerObject) {
         console.log('answerObject', answerObject);
         const data = await this.$axios.$post(
-            'http://localhost:5914/api/saveAnswerObject',
+            'http://http://35.247.12.200:5914/api/saveAnswerObject',
             // state.askmequestionUrl + '/saveAnswerObject',
             answerObject
         )
@@ -48,7 +48,7 @@ export const actions = {
     //   console.log('question', question)
 
     //   const data = await this.$axios.$post(
-    //     'http://localhost:5914/api/uploadQuestion',
+    //     'http://http://35.247.12.200:5914/api/uploadQuestion',
     //     question
     //   )
     //   console.log('data: ', data)
@@ -63,7 +63,7 @@ export const actions = {
     // async getQuestionAll({ commit }) {
 
     //   const data = await this.$axios.$get(
-    //     'http://localhost:5914/api/getAllQuestion'
+    //     'http://http://35.247.12.200:5914/api/getAllQuestion'
     //   )
     //   console.log('data: ', data)
     //   const res = data
@@ -71,7 +71,7 @@ export const actions = {
     // }, async getQuestion({ commit },urlcode) {
     //   console.log("urlcode:", urlcode);
     //   const data = await this.$axios.$get(
-    //     'http://localhost:5914/api/getQuestion?urlcode='+urlcode
+    //     'http://http://35.247.12.200:5914/api/getQuestion?urlcode='+urlcode
     //   )
     //   console.log('data: ', data)
     //   const res = data
