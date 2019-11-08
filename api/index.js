@@ -6,7 +6,7 @@ const app = express()
 // Require API routes
 const users = require('./routes/users')
 const question = require('./question/question-route');
-app.use(question)
+app.use("/", question)
 // Import API Routes
 app.use(users)
 
