@@ -73,5 +73,12 @@ module.exports = {
   serverMiddleware: [
     // API middleware
     '~/api/index.js'
-  ]
+  ],
+  proxy: {
+    "/api/": "http://35.247.12.200:5914/", //  在打api 的時候會變成  https://opendata.cwb.gov.tw/api/
+    // "/authinit/": {
+    //   target: process.env.SESSION_API_URL || "https://opendata.cwb.gov.tw/",
+    //   pathRewrite: { "^/authinit/": "" } // 這邊會變成    https://opendata.cwb.gov.tw/   會自己將authinit 取代掉
+    // }
+  },
 }
