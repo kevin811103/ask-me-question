@@ -2,10 +2,11 @@ const config = {
     // port: 3000,
     database:{
         DATABASE: 'askmequestion',    //数据库
-        USERNAME: 'eric',    //用户
+        USERNAME: 'ericchang',    //用户
         PASSWORD: '1234',     //密码
         PORT: '3306',        //端口
-        HOST: '34.67.195.119'     //服务ip地址
+        // HOST: '34.67.195.119'     //服务ip地址
+        HOST:'35.22.5.102'
     }
 	    // database:{
     //     DATABASE: 'test',    //数据库

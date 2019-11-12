@@ -29,7 +29,7 @@ export const actions = {
     async saveAnswerObject({ commit,state }, answerObject) {
         console.log('answerObject', answerObject);
         const data = await this.$axios.$post(
-            '/api/saveAnswerObject',
+            'authinit/saveAnswerObject',
             // state.askmequestionUrl + '/saveAnswerObject',
             answerObject
         )

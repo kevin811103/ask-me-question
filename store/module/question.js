@@ -3,8 +3,8 @@
 export const state = () => ({
   userName: "",
   question: {},
-  askmequestionUrl: "api",
-  // askmequestionUrl: "http://http://localhost:5914/api",
+  askmequestionUrl: "authinit",
+  // askmequestionUrl: "http://http://localhost:5914/authinit",
   urlcode: ""
 })
 export const mutations = {
@@ -28,11 +28,11 @@ export const actions = {
     console.log('question', question)
     //        state.askmequestionUrl +  '/uploadQuestion',
     const data = await this.$axios.$post(
-      'api/uploadQuestion',
+      'authinit/uploadQuestion',
       question
     )
-    // 'http://icanhelpyou.ml:5914/api/uploadQuestion',
-    // 'http://localhost:5914/api/uploadQuestion',
+    // 'http://icanhelpyou.ml:5914/authinit/uploadQuestion',
+    // 'http://localhost:5914/authinit/uploadQuestion',
     console.log('data: ', data)
     if (data.result.insertId > 0) {
       const res = data
@@ -45,7 +45,7 @@ export const actions = {
   async getQuestionAll({ commit }) {
 
     const data = await this.$axios.$get(
-      '/api/getAllQuestion'
+      'authinit/getAllQuestion'
     )
     console.log('data: ', data)
     const res = data
@@ -53,11 +53,11 @@ export const actions = {
   }, async getQuestion({ commit, state }, urlcode) {
     // console.log("urlcode:", urlcode);
     const data = await this.$axios.$get(
-      'api/getQuestion?urlcode=' + urlcode
-      // state.askmequestionUrl + '/api/getQuestion?urlcode=' + urlcode
+      'authinit/getQuestion?urlcode=' + urlcode
+      // state.askmequestionUrl + 'authinit/getQuestion?urlcode=' + urlcode
     )
-    // 'http://icanhelopyou.ml:5914/api/getQuestion?urlcode='+urlcode
-    // 'http://http://localhost:5914/api/getQuestion?urlcode='+urlcode
+    // 'http://icanhelopyou.ml:5914authinit/getQuestion?urlcode='+urlcode
+    // 'http://http://localhost:5914authinit/getQuestion?urlcode='+urlcode
     // console.log('data: ', data)
     const res = data
     return { status: 200, res }

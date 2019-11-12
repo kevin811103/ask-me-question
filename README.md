@@ -20,3 +20,7 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+
+
+可能需要
+https://cloud.google.com/sql/docs/mysql/connect-compute-engine?hl=zh-tw
