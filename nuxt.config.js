@@ -64,7 +64,9 @@ module.exports = {
     // "/api/": "http://icanhelpyou.ml:5914/", //  在打api 的時候會變成  https://opendata.cwb.gov.tw/api/
     "/authinit/": {
       target:  "http://icanhelpyou.ml:5914/api/",
-      pathRewrite: { "^/authinit/": "" } // 這邊會變成    https://opendata.cwb.gov.tw/   會自己將authinit 取代掉
+      pathRewrite: { "^/authinit/": "" ,
+      "secure": false,
+      "changeOrigin": true} // 這邊會變成    https://opendata.cwb.gov.tw/   會自己將authinit 取代掉
     }
   },
   /*
